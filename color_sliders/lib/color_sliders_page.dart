@@ -29,17 +29,42 @@ class _ColorSlidersPageState extends State<ColorSlidersPage> {
             label: "Red",
             color: Colors.red,
             value: redValue,
+            sliderChanged: (newValue) {
+              setState(() {
+                redValue = newValue;
+              });
+            },
           ),
           ColorSlider(
             label: "Green",
             color: Colors.green,
             value: greenValue,
+            sliderChanged: (newValue) {
+              setState(() {
+                greenValue = newValue;
+              });
+            },
           ),
           ColorSlider(
             label: "Blue",
             color: Colors.blue,
             value: blueValue,
+            sliderChanged: (newValue) {
+              setState(() {
+                blueValue = newValue;
+              });
+            },
           ),
+          Expanded(
+              child: Container(
+            margin: const EdgeInsets.all(20.0),
+            color: Color.fromRGBO(
+              (redValue * 255).round(),
+              (greenValue * 255).round(),
+              (blueValue * 255).round(),
+              1.0,
+            ),
+          ))
         ],
       ),
     );

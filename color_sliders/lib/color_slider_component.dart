@@ -4,12 +4,14 @@ class ColorSlider extends StatelessWidget {
   final String label;
   final Color color;
   final double value;
+  final void Function(double) sliderChanged;
 
   const ColorSlider({
     super.key,
     required this.label,
     required this.color,
     required this.value,
+    required this.sliderChanged,
   });
 
   @override
@@ -28,9 +30,12 @@ class ColorSlider extends StatelessWidget {
         ),
         Slider(
           value: value,
-          onChanged: (newValue) {
-            print("TODO: Tell the parent the value $newValue");
-          },
+          activeColor: color,
+          // onChanged: (newValue) {
+          //   print("TODO: Tell the parent the value $newValue");
+          //   sliderChanged(newValue);
+          // },
+          onChanged: sliderChanged,
         ),
       ],
     );
